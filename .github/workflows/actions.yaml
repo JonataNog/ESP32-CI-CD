@@ -46,4 +46,4 @@ jobs:
         with: 
           name: unit-test
           path: |
-            ESP32-CI-CD/test/build/unitExample.bin
+            test/build/unitExample.bin
