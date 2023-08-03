@@ -13,4 +13,4 @@ set(EXTRA_COMPONENT_DIRS "../components")
 set(TEST_COMPONENTS "testable" CACHE STRING "List of components to test")
 
 include($ENV{IDF_PATH}/tools/cmake/project.cmake)
-project(ESP32-CI-CD/testssss/)
+project(ESP32-CI-CD/test)
