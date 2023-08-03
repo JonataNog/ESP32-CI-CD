@@ -14,7 +14,7 @@ jobs:
           submodules: 'recursive'
 
       - name: Artistic Style
-        uses: per1234/artistic-style0action@v1.0.2
+        uses: per1234/artistic-style-action@v1.0.2
         with:
           name-patterns: |
             - '*.c'
