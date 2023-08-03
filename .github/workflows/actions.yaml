@@ -24,7 +24,7 @@ jobs:
         with: 
           name: release
           path: |
-            ESP32-CI-CD
+            build/ESP32-CI-CD.bin
 
 
   test:
@@ -46,4 +46,4 @@ jobs:
         with: 
           name: unit-test
           path: |
-            ESP32-CI-CD/test
+            ESP32-CI-CD/test/build/test.bin
