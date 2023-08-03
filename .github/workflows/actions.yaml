@@ -29,6 +29,7 @@ jobs:
       - name: partitions.csv
         run: |
           sudo mv default.csv build/default.csv
+          mv default.csv partitions.csv
 
       - name: ESP32 QEmu Runner
         uses: tobozo/esp32-qemu-sim@1.0.0
