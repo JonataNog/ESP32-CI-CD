@@ -54,15 +54,15 @@ jobs:
       - name: Repo checkout
         uses: actions/checkout@v3
 
-      - name: ESP32 - QEmu Runner
-        uses: tobozo/esp32-qemu-sim@v1
-        with:
+       - name: ESP32 QEmu Runner
+         uses: tobozo/esp32-qemu-sim@1.0.0
+         with:
           flash-size: 
           build-folder: ./build
           qemu-timeout: "60"
 
-      - name: ESP32 Unit Tests - QEmu Runner
-        uses: tobozo/esp32-qemu-sim@v1
+      - name: ESP32 Unit Test QEmu Runner
+        uses: tobozo/esp32-qemu-sim@1.0.0
         with:
           flash-size: 
           build-folder: test/build
