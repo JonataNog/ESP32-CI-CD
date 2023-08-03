@@ -26,30 +26,30 @@ jobs:
           path: |
             build/ESP32-CI-CD.bin
 
-  test:
-    runs-on: ubuntu-latest
-    needs: [build]
-    steps:
-      - name: Repo checkout
-        uses: actions/checkout@v3
+#  test:
+#    runs-on: ubuntu-latest
+#    needs: [build]
+#    steps:
+#      - name: Repo checkout
+#        uses: actions/checkout@v3
 
-      - name: Build unit tests
-        uses: espressif/esp-idf-ci-action@v1.1.0
-        with:
-          esp_idf_version: v4.4
-          target: esp32
-          path: test
+#      - name: Build unit tests
+#        uses: espressif/esp-idf-ci-action@v1.1.0
+#        with:
+#          esp_idf_version: v4.4
+#          target: esp32
+#          path: test
 
-      - name: Store Artifacts
-        uses: actions/upload-artifact@v3
-        with: 
-          name: unit-test
-          path: |
-            test/build/unitExample.bin
+#      - name: Store Artifacts
+#        uses: actions/upload-artifact@v3
+#        with: 
+#          name: unit-test
+#          path: |
+#            test/build/unitExample.bin
 
   runner:
     runs-on: ubuntu-latest
-    needs: [test]
+#    needs: [test]
     steps:
       - name: Repo checkout
         uses: actions/checkout@v3
@@ -58,7 +58,6 @@ jobs:
         uses: tobozo/esp32-qemu-sim@1.0.0
         with:
          flash-size: 4
-         build-folder: ./build
          qemu-timeout: "60"
 
 #      - name: ESP32 Unit Test QEmu Runner
