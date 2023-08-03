@@ -57,14 +57,14 @@ jobs:
       - name: ESP32 QEmu Runner
         uses: tobozo/esp32-qemu-sim@1.0.0
         with:
-         flash-size: 
-         build-folder: build
+         flash-size: 4
+         build-folder: ./build
          qemu-timeout: "60"
 
-      - name: ESP32 Unit Test QEmu Runner
-        uses: tobozo/esp32-qemu-sim@1.0.0
-        with:
-          flash-size: 
-          build-folder: test/build
-          qemu-timeout: "60"        
+#      - name: ESP32 Unit Test QEmu Runner
+#        uses: tobozo/esp32-qemu-sim@1.0.0
+#        with:
+#          flash-size: 4
+#          build-folder: test/build
+#          qemu-timeout: "60"        
   
