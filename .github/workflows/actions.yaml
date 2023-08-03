@@ -26,6 +26,11 @@ jobs:
           path: |
             build/ESP32-CI-CD.bin
 
+      - name: partitions.csv
+        run: |
+          cd build
+          wget https://github.com/espressif/arduino-esp32/blob/21b88659b9ded3fcc1082f23f498bc2a04cd4f1b/tools/partitions/default.csv
+
       - name: ESP32 QEmu Runner
         uses: tobozo/esp32-qemu-sim@1.0.0
         with:
