@@ -13,12 +13,12 @@ jobs:
         with:
           submodules: 'recursive'
 
-      - name: Artistic Style
-        uses: per1234/artistic-style-action@v1.0.2
-        with:
-          name-patterns: |
-            - '*.c'
-            - '*.h'
+#      - name: Artistic Style
+#        uses: per1234/artistic-style-action@v1.0.2
+#        with:
+#          name-patterns: |
+#            - '*.c'
+#            - '*.h'
 
       - name: Espressif IoT Development Framework (ESP-IDF)
         uses: espressif/esp-idf-ci-action@v1.1.0
