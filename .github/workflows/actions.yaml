@@ -31,7 +31,7 @@ jobs:
         with:
           esp_idf_version: v4.4
           target: esp32
-          path: ESP32-CI-CD/test
+          path: ESP32-CI-CD/test/
 
       - name: Show result tests
         uses: EnricoMi/publish-unit-test-result-action@v1
