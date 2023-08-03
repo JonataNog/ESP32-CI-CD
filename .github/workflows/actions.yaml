@@ -33,8 +33,15 @@ jobs:
           target: esp32
           path: test
 
+      - name: Store Artifacts
+        uses: actions/upload-artifact@v3
+        with: 
+          name: unit-tests.xml
+          path: |
+            build/test.xml
+
       - name: Show result tests
-        uses: EnricoMi/publish-unit-test-result-action@v1
-#        if: always()
-#        with:
-#            files: report.xml
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        if: always()
+        with:
+            files: test.xml
