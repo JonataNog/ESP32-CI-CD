@@ -26,7 +26,6 @@ jobs:
           path: |
             build/ESP32-CI-CD.bin
 
-
   test:
     runs-on: ubuntu-latest
     needs: [build]
@@ -47,3 +46,25 @@ jobs:
           name: unit-test
           path: |
             test/build/unitExample.bin
+
+  runner:
+    runs-on: ubuntu-latest
+    needs: [test]
+    steps:
+      - name: Repo checkout
+        uses: actions/checkout@v3
+
+      - name: ESP32 - QEmu Runner
+        uses: tobozo/esp32-qemu-sim@v1
+        with:
+          flash-size: 
+          build-folder: ./build
+          qemu-timeout: "60"
+
+      - name: ESP32 Unit Tests - QEmu Runner
+        uses: tobozo/esp32-qemu-sim@v1
+        with:
+          flash-size: 
+          build-folder: test/build
+          qemu-timeout: "60"        
+  
