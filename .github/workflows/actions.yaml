@@ -22,47 +22,34 @@ jobs:
       - name: Store Artifacts
         uses: actions/upload-artifact@v3
         with: 
-          name: release
+          name: ESP32-CI-CD
           path: |
             build/ESP32-CI-CD.bin
 
-      - name: partitions.csv
-        run: |
-          sudo mv default.csv build/default.csv
-          cd build
-          sudo mv default.csv partitions.csv
+  test:
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
+      - name: Repo checkout
+        uses: actions/checkout@v3
 
-      - name: ESP32 QEmu Runner
-        uses: tobozo/esp32-qemu-sim@1.0.0
+      - name: Build unit tests
+        uses: espressif/esp-idf-ci-action@v1.1.0
         with:
-         flash-size: 4
-         build-folder: build
-         qemu-timeout: "60"
+          esp_idf_version: v4.4
+          target: esp32
+          path: test
 
-#  test:
-#    runs-on: ubuntu-latest
-#    needs: [build]
-#    steps:
-#      - name: Repo checkout
-#        uses: actions/checkout@v3
-
-#      - name: Build unit tests
-#        uses: espressif/esp-idf-ci-action@v1.1.0
-#        with:
-#          esp_idf_version: v4.4
-#          target: esp32
-#          path: test
-
-#      - name: Store Artifacts
-#        uses: actions/upload-artifact@v3
-#        with: 
-#          name: unit-test
-#          path: |
-#            test/build/unitExample.bin
+      - name: Store Artifacts
+        uses: actions/upload-artifact@v3
+        with: 
+          name: unit-test
+          path: |
+            test/build/unitExample.bin
 
 #  runner:
 #    runs-on: ubuntu-latest
-#    needs: [build]
+#    needs: [test]
 #    steps:
 #      - name: Repo checkout
 #        uses: actions/checkout@v3
@@ -71,6 +58,7 @@ jobs:
 #        uses: tobozo/esp32-qemu-sim@1.0.0
 #        with:
 #         flash-size: 4
+#         build-folder: build
 #         qemu-timeout: "60"
 
 #      - name: ESP32 Unit Test QEmu Runner
