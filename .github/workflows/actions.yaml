@@ -57,7 +57,7 @@ jobs:
       - name: Download artifacts
         uses: actions/download-artifact@v3
         with:
-          name: ESP32-CI-CD.bin
+          name: ESP32-CI-CD
 
       - name: Create release
         uses: ncipollo/release-action@v1.12.0
