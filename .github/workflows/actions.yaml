@@ -1,6 +1,8 @@
 name: ESP32-CI-CD
 on:
   push:
+    tags:
+    - '*'
     branches:
       - main
 
@@ -62,6 +64,6 @@ jobs:
       - name: Create release
         uses: ncipollo/release-action@v1.12.0
         with:
-          artifacts: "ESP32-CI-CD.bin"
+          artifacts: "ESP32-CI-CD"
           bodyFile: "body.md"
      
