@@ -10,15 +10,6 @@ jobs:
     steps:
       - name: Repo checkout
         uses: actions/checkout@v3
-        with:
-          submodules: 'recursive'
-
-#      - name: Artistic Style
-#        uses: per1234/artistic-style-action@v1.0.2
-#        with:
-#          name-patterns: |
-#            - '*.c'
-#            - '*.h'
 
       - name: Espressif IoT Development Framework (ESP-IDF)
         uses: espressif/esp-idf-ci-action@v1.1.0
@@ -28,50 +19,49 @@ jobs:
 
       - name: Store Artifacts
         uses: actions/upload-artifact@v3
-        with: 
+        with:
           name: ESP32-CI-CD
           path: |
             build/ESP32-CI-CD.bin
 
-  test:
+#  test:
+#    runs-on: ubuntu-latest
+#    needs: [build]
+#    steps:
+#      - name: Repo checkout
+#        uses: actions/checkout@v3
+#
+#      - name: Build unit tests
+#        uses: espressif/esp-idf-ci-action@v1.1.0
+#        with:
+#          esp_idf_version: v4.4
+#          target: esp32
+#          path: test
+#
+#      - name: Store Artifacts
+#        uses: actions/upload-artifact@v3
+#        with:
+#          name: unit-test
+#          path: |
+#            test/build/unitExample.bin
+
+  delivery:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     needs: [build]
     steps:
       - name: Repo checkout
         uses: actions/checkout@v3
 
-      - name: Build unit tests
-        uses: espressif/esp-idf-ci-action@v1.1.0
+      - name: Download artifacts
+        uses: actions/download-artifact@v3
+          with:
+            name: ESP32-CI-CD.bin
+
+      - name: Create release
+        uses: ncipollo/release-action@v1.12.0
         with:
-          esp_idf_version: v4.4
-          target: esp32
-          path: test
-
-      - name: Store Artifacts
-        uses: actions/upload-artifact@v3
-        with: 
-          name: unit-test
-          path: |
-            test/build/unitExample.bin
-
-#  runner:
-#    runs-on: ubuntu-latest
-#    needs: [test]
-#    steps:
-#      - name: Repo checkout
-#        uses: actions/checkout@v3
-
-#      - name: ESP32 QEmu Runner
-#        uses: tobozo/esp32-qemu-sim@1.0.0
-#        with:
-#         flash-size: 4
-#         build-folder: build
-#         qemu-timeout: "60"
-
-#      - name: ESP32 Unit Test QEmu Runner
-#        uses: tobozo/esp32-qemu-sim@1.0.0
-#        with:
-#          flash-size: 4
-#          build-folder: test/build
-#          qemu-timeout: "60"        
-  
+          artifacts: "ESP32-CI-CD.bin"
+          bodyFile: "body.md"
+     
