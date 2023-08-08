@@ -4,7 +4,8 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${workspaceFolder}/main"
+                "${workspaceFolder}/main",
+                "${workspaceFolder}/components/dht"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",

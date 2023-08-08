@@ -24,11 +24,9 @@ void test_reasonable_values(){
     TEST_ASSERT(1, reasonable_values());
 }
 
-int main(void)
+int app_main(void)
 {
     UNITY_BEGIN();
     RUN_TEST(test_reasonable_values);
-    return UNITY_END();
+    UNITY_END();
 }
-
-
