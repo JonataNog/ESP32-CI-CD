@@ -64,16 +64,14 @@ jobs:
       - name: Repo checkout
         uses: actions/checkout@v3
 
-      - name: Store Artifacts
-        uses: actions/upload-artifact@v3
+      - name: Download artifacts
+        uses: actions/download-artifact@v3
         with:
           name: ESP32-CI-CD
-          path: |
-            build/ESP32-CI-CD.bin
 
       - name: Create release
         uses: ncipollo/release-action@v1.12.0
         with:
-          artifacts: "build/ESP32-CI-CD"
-          tag: 1.0.08
+          artifacts: "ESP32-CI-CD"
+          tag: 1.0.09
           bodyFile: "body.md"
