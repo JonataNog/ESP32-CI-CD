@@ -26,6 +26,13 @@ jobs:
           path: |
             build/ESP32-CI-CD.bin
 
+      - name: Create release
+        uses: ncipollo/release-action@v1.12.0
+        with:
+          artifacts: "build/ESP32-CI-CD.bin"
+          tag: 1.0.05
+          bodyFile: "body.md"
+
 #  test:
 #    runs-on: ubuntu-latest
 #    needs: [build]
@@ -47,25 +54,25 @@ jobs:
 #          path: |
 #            test/build/unitExample.bin
 
-  delivery:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    needs: [build]
-    steps:
-      - name: Repo checkout
-        uses: actions/checkout@v3
+#  delivery:
+#    runs-on: ubuntu-latest
+#    permissions:
+#      contents: write
+#    needs: [build]
+#    steps:
+#      - name: Repo checkout
+#        uses: actions/checkout@v3
 
-      - name: Download artifacts
-        uses: actions/download-artifact@v3
-        with:
-          name: ESP32-CI-CD
+#      - name: Download artifacts
+#        uses: actions/download-artifact@v3
+#        with:
+#          name: ESP32-CI-CD
 
-      - name: Create release
-        uses: ncipollo/release-action@v1.12.0
-        with:
-          artifacts: "build/ESP32-CI-CD.bin"
-          tag: 1.0.05
-          bodyFile: "body.md"
+#      - name: Create release
+#        uses: ncipollo/release-action@v1.12.0
+#        with:
+#          artifacts: "build/ESP32-CI-CD.bin"
+#          tag: 1.0.05
+#          bodyFile: "body.md"
 
 
