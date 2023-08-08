@@ -68,17 +68,12 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: ESP32-CI-CD
-
-      - name: Store Artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: ESP32-CI-CD
-          path: |
-            /home/runner/work/ESP32-CI-CD/ESP32-CI-CD
-
-      - name: Create release
-        uses: ncipollo/release-action@v1.12.0
-        with:
-          artifacts: "ESP32-CI-CD"
-          tag: 1.0.09
-          bodyFile: "body.md"
+          path: 
+      - name: mostrando o conteudo do download
+        run: ls -R
+#      - name: Create release
+#        uses: ncipollo/release-action@v1.12.0
+#        with:
+#          artifacts: "ESP32-CI-CD"
+#          tag: 1.0.09
+#          bodyFile: "body.md"
