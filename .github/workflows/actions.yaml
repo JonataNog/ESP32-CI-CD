@@ -72,6 +72,6 @@ jobs:
       - name: Create release
         uses: ncipollo/release-action@v1.12.0
         with:
-          artifacts: "ESP32-CI-CD"
+          artifacts: "/home/runner/work/ESP32-CI-CD"
           tag: 1.0.09
           bodyFile: "body.md"
