@@ -61,8 +61,8 @@ jobs:
       contents: write
     needs: [build]
     steps:
-#      - name: Repo checkout
-#        uses: actions/checkout@v3
+      - name: Repo checkout
+        uses: actions/checkout@v3
 
 #      - name: Download artifacts
 #        uses: actions/download-artifact@v3
