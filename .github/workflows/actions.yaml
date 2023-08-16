@@ -43,12 +43,20 @@ jobs:
           cd tests
           ls
 
-      - name: Show results
-        uses: EnricoMi/publish-unit-test-result-action@v2
-        if: always()
+      - name: Test Report
+        uses: dorny/test-reporter@v1
+        if: success() || failure()    # run this step even if previous step failed
         with:
-          files: |
-            check-example.ctests.xml
+          name: JEST Tests            # Name of the check run which will be created
+          path: tests/check-example.ctests.xml    # Path to test results
+          reporter: jest-junit  
+
+#      - name: Show results
+#        uses: EnricoMi/publish-unit-test-result-action@v2
+#        if: always()
+#        with:
+#          files: |
+#            check-exacheck-example.ctests.xml
 
   delivery:
     runs-on: ubuntu-latest
