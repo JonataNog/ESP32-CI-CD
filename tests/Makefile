@@ -26,7 +26,7 @@ test: check_example_tests
 	./check_example_tests
 
 coverage_report.html: test
-	$(GCOV) $(GCONV_FLAGS) -o coverage_report.html
+	#$(GCOV) $(GCONV_FLAGS) -o coverage_report.html
 
 .PHONY: clean all
 
