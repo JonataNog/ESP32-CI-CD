@@ -40,12 +40,12 @@ jobs:
           cd tests
           make
 
-    - name: Show results
-      uses: EnricoMi/publish-unit-test-result-action@v2
-      if: always()
-      with:
-        files: |
-          check-example.ctests.xml
+      - name: Show results
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        if: always()
+        with:
+          files: |
+            check-example.ctests.xml
 
   delivery:
     runs-on: ubuntu-latest
