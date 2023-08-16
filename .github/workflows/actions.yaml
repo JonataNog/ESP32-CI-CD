@@ -51,7 +51,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    needs: [build]
+    needs: [test]
     steps:
       - name: Repo checkout
         uses: actions/checkout@v3
