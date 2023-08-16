@@ -49,8 +49,7 @@ jobs:
         with:
           name: JEST Tests            # Name of the check run which will be created
           path: tests/check-example.ctests.xml    # Path to test results
-          reporter: jest-junit  
-
+          
 #      - name: Show results
 #        uses: EnricoMi/publish-unit-test-result-action@v2
 #        if: always()
