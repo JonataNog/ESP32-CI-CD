@@ -28,7 +28,7 @@ int main(void){
     s = example_suite();
     runner = srunner_create(s);
 
-    srunner_set_xml(runner, __FILE__ "tests.xml");
+    srunner_set_xml(runner, __FILE__ ".xml");
     srunner_run_all(runner, CK_NORMAL);
     no_failed = srunner_ntests_failed(runner);
     srunner_free(runner);

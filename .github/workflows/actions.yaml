@@ -48,7 +48,7 @@ jobs:
         if: always()
         with:
           files: |
-             tests/*.xml
+             tests/check-example.c.xml
 
   delivery:
     runs-on: ubuntu-latest
