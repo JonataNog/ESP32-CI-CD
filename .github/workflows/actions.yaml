@@ -40,7 +40,8 @@ jobs:
           sudo apt-get install check
           cd tests
           make
-
+          cd tests
+          ls
       - name: Show results
         uses: EnricoMi/publish-unit-test-result-action@v2
         if: always()
