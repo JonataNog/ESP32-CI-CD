@@ -37,6 +37,7 @@ jobs:
 
       - name: Build tests
         run: |
+          sudo apt-get install check
           cd tests
           make
 
