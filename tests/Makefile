@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -c -Wall $(shell pkg-config --cflags check)
 PROFILE_FLAGS = -fprofile-arcs -ftest-coverage
-TST_LIBS = -lcheck -lm -lpthread -lrt 
+TST_LIBS = -lcheck -lm -lpthread -lrt -lsubunit 
 COV_LIBS = -lgcov -coverage
 SRC_DIR= src
 TST_DIR= tests
