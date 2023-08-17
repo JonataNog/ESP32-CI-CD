@@ -63,7 +63,7 @@ jobs:
         if: always()
         with:
           files: |
-             test.xml
+             test/test.xml
 
   delivery:
     runs-on: ubuntu-latest
