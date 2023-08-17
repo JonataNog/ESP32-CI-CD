@@ -30,6 +30,9 @@ jobs:
 
   test:
     runs-on: ubuntu-latest
+    permissions:
+      checks: write
+      pull-requests: write
 #    needs: [build]
     steps:
       - name: Repo checkout
