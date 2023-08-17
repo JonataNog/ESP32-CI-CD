@@ -7,33 +7,33 @@ on:
       - main
 
 jobs:
-#  build:
-#    runs-on: ubuntu-latest
-#    permissions:
-#      contents: write
-#    steps:
-#      - name: Repo checkout
-#        uses: actions/checkout@v3
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Repo checkout
+        uses: actions/checkout@v3
 
-#      - name: Espressif IoT Development Framework (ESP-IDF)
-#        uses: espressif/esp-idf-ci-action@v1.1.0
-#        with:
-#          esp_idf_version: v4.4
-#          target: esp32
+      - name: Espressif IoT Development Framework (ESP-IDF)
+        uses: espressif/esp-idf-ci-action@v1.1.0
+        with:
+          esp_idf_version: v4.4
+          target: esp32
 
-#      - name: Store Artifacts
-#        uses: actions/upload-artifact@v3
-#        with:
-#          name: ESP32-CI-CD
-#          path: |
-#            build/ESP32-CI-CD.bin
+      - name: Store Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: ESP32-CI-CD
+          path: |
+            build/ESP32-CI-CD.bin
 
   test:
     runs-on: ubuntu-latest
     permissions:
       checks: write
       pull-requests: write
-#    needs: [build]
+    needs: [build]
     steps:
       - name: Repo checkout
         uses: actions/checkout@v3
@@ -44,22 +44,7 @@ jobs:
           sudo apt-get install meson
           cd test
           gcc -o test test.c -lcriterion
-          ./test --xml > test.xml 
-
-#      - name: Build tests
-#        run: |
-#          sudo apt-get install check
-#          cd tests
-#          make
-#          cd tests
-#          ls
-
-      - name: Store Artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: Tests XML
-          path: |
-            test/test.xml
+          ./test --xml > test.xml
 
       - name: Show results
         uses: EnricoMi/publish-unit-test-result-action@v2
@@ -86,5 +71,5 @@ jobs:
         uses: ncipollo/release-action@v1.12.0
         with:
           artifacts: "ESP32-CI-CD.bin"
-          tag: 1.0.12
+          tag: 1.0.13
           bodyFile: "body.md"
