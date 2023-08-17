@@ -43,12 +43,19 @@ jobs:
           cd tests
           ls
 
+#      - name: Store Artifacts
+#        uses: actions/upload-artifact@v3
+#        with:
+#          name: Tests XML
+#          path: |
+            
+
       - name: Show results
         uses: EnricoMi/publish-unit-test-result-action@v2
         if: always()
         with:
           files: |
-             tests/check-example.c.xml
+             tests/tests/check-example.c.xml
 
   delivery:
     runs-on: ubuntu-latest
