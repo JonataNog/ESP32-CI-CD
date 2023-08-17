@@ -3,6 +3,7 @@
     "idf.port": "/dev/ttyUSB0",
     "idf.flashType": "UART",
     "files.associations": {
-        "unity.h": "c"
+        "unity.h": "c",
+        "criterion.h": "c"
     }
 }

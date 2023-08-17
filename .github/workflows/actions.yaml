@@ -1,8 +1,9 @@
 name: ESP32-CI-CD
 on:
   push:
-    tags:
-      - '*'
+    branches:
+      - main
+  pull_request:
     branches:
       - main
 
